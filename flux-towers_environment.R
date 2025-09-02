@@ -1,14 +1,13 @@
-library(ggridges)
-library(viridis)
-library(hrbrthemes)
+### Setup: use Require package to load/install missing packages
+Require::Require(c("data.table", "tidyverse", "ggridges", "patchwork"))
 
 
 ### List csv files containing half-hourly Eddy-Covariance Fluxes
 
-files_path <- list.files(path = "EC-Data_ALL/", pattern = ".csv", full.names = T)
+files_path <- list.files(path = "work/polybox-teaching/flux-towers/", pattern = ".csv", full.names = T, recursive = T)
 
-names_ec <- sub("^[^_]*_[^_]*_([^_]*)_.*$", "\\1", files_path)
-setattr(files_path, 'names', names_ec)
+# names_ec <- sub("^[^_]*_[^_]*_([^_]*)_.*$", "\\1", files_path)
+# setattr(files_path, 'names', names_ec)
 
 # List
 list_ec_fluxes <-
