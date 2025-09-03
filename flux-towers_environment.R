@@ -1,5 +1,7 @@
 ### Setup: use library to load missing packages (within R project we need to use renv::install() to install missing packages)
-lapply(c("tidyverse", "data.table", "patchwork"), library, character.only = T)
+library(tidyverse)
+library(data.table)
+library(patchwork)
 
 ### READ data & files ----
 # List csv files containing half-hourly Eddy-Covariance Fluxes
@@ -16,7 +18,7 @@ setattr(files_path, 'names', names_ec)
 list_ec_fluxes <-
   lapply(
     X = files_path,
-    FUN = fread, na.strings = "-9999"
+    FUN = data.table::fread, na.strings = "-9999"
   )
 
 
