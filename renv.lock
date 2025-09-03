@@ -60,20 +60,6 @@
       ],
       "Hash": "45f0398006e83a5b10b72a90663d8d8c"
     },
-    "Require": {
-      "Package": "Require",
-      "Version": "0.3.1",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "R",
-        "data.table",
-        "methods",
-        "tools",
-        "utils"
-      ],
-      "Hash": "4d539baf236063f4ad906bcfc25d5a2f"
-    },
     "cli": {
       "Package": "cli",
       "Version": "3.6.1",
@@ -98,17 +84,6 @@
         "stats"
       ],
       "Hash": "f20c47fd52fae58b4e377c37bb8c335b"
-    },
-    "data.table": {
-      "Package": "data.table",
-      "Version": "1.14.8",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "R",
-        "methods"
-      ],
-      "Hash": "b4c06e554f33344e044ccd7fdca750a9"
     },
     "fansi": {
       "Package": "fansi",
