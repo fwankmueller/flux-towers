@@ -1,20 +1,23 @@
-### Setup: use Require package to load/install missing packages
-Require::Require(c("data.table", "tidyverse", "ggridges", "patchwork"))
+### Setup: use library to load missing packages (within R project we need to use renv::install() to install missing packages)
+lapply(c("tidyverse", "data.table", "patchwork"), library, character.only = T)
 
+### READ data & files ----
+# List csv files containing half-hourly Eddy-Covariance Fluxes
+files_path <- list.files(path = "~/work/polybox-teaching/flux-towers/", pattern = ".csv", full.names = T, recursive = T)
 
-### List csv files containing half-hourly Eddy-Covariance Fluxes
+# extract site name and give it to files_path
+names_ec <-
+  basename(path = files_path) %>% 
+  str_extract(pattern = ".*(?=_FLUXNET)")
 
-files_path <- list.files(path = "work/polybox-teaching/flux-towers/", pattern = ".csv", full.names = T, recursive = T)
+setattr(files_path, 'names', names_ec)
 
-# names_ec <- sub("^[^_]*_[^_]*_([^_]*)_.*$", "\\1", files_path)
-# setattr(files_path, 'names', names_ec)
-
-# List
+# read files: results in a list
 list_ec_fluxes <-
-    lapply(
+  lapply(
     X = files_path,
     FUN = fread, na.strings = "-9999"
-)
+  )
 
 
 # It's a list of non-rectangular data.tables
